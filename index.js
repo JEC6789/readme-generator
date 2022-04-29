@@ -6,7 +6,7 @@ const promptUser = () => {
     return inquirer.prompt([
         {
             type: "input",
-            name: "name",
+            name: "title",
             message: "What is the name of your project? (Required)",
             validate: nameInput => {
                 if (nameInput) {
@@ -61,6 +61,19 @@ const promptUser = () => {
             }
         },
         {
+            type: "input",
+            name: "credits",
+            message: "Please enter other users or outside sources you would like to credit. (Required)",
+            validate: nameInput => {
+                if (nameInput) {
+                    return true;
+                } else {
+                    console.log("Please enter your project credits!");
+                    return false;
+                }
+            }
+        },
+        {
             type: "confirm",
             name: "confirmContribs",
             message: "Do you want other users to contribute to your project?",
@@ -91,7 +104,7 @@ const promptUser = () => {
             }
         },
         {
-            type: "checkbox",
+            type: "list",
             name: "license",
             message: "Select a license to use for your project.",
             choices: ["none"] // I don't know anything about licensing
@@ -122,10 +135,15 @@ const promptUser = () => {
                 }
             }
         }
-    ]);
+    ]).then(data => {
+        return data;
+    });
 };
 
 promptUser()
+    .then(data => {
+        return generateMarkdown(data);
+    })
     .catch(err => {
         console.log(err);
 });

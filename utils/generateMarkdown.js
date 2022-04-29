@@ -10,11 +10,47 @@ function renderLicenseLink(license) {}
 // If there is no license, return an empty string
 function renderLicenseSection(license) {}
 
+function installSection(data) {
+  if(data.confirmInstall) {
+    return `
+## Installation
+
+${data.install}
+
+## Usage
+
+${data.usage}`;
+  } else {
+    return ``;
+  }
+}
+
+function installSectionLink(data) {
+  if(data.confirmInstall) {
+    return `
+- [Installation](#installation)
+- [Usage](#usage)`;
+  } else {
+    return ``;
+  }
+}
+
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  return `# ${data.title}
+  return console.log(`# ${data.title}
 
-`;
+## Description
+
+${data.desc}
+
+## Table of Contents
+` + installSectionLink(data) + `
+- [Credits](#credits)
+- [License](#license)
+` + installSection(data) + `
+## Credits
+
+${data.credits}`);
 }
 
 module.exports = generateMarkdown;
