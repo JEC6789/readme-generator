@@ -107,7 +107,7 @@ const promptUser = () => {
             type: "list",
             name: "license",
             message: "Select a license to use for your project.",
-            choices: ["none"] // I don't know anything about licensing
+            choices: ["none", "Apache", "Boost", "BSD", "CC", "Eclipse", "GNU", "MIT", "Mozilla"]
         },
         {
             type: "input",
