@@ -1,11 +1,19 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
+function contribsSection(data) {
+  if(data.confirmContribs) {
+    return `
+## Contributing
+
+${data.contribs}
+`;
+  } else {
+    return ``;
+  }
+}
+
 function renderLicenseBadge(license) {
   return `![license: ${license}](https://img.shields.io/badge/license-${license}-green)`;
 }
 
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
 function renderLicenseLink(license) {
   switch(license) {
     case "Apache":
@@ -33,15 +41,14 @@ function renderLicenseLink(license) {
   }
 }
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
-function renderLicenseSection(license) {
+function licenseSection(license) {
   if(license !== "none") {
-    return `## License
-
+    return `
+## License
 ` + renderLicenseBadge(license) + `
 
-This repository falls under ` + renderLicenseLink(license) + `. More information may be available on this repository's "LICENSE" page.`;
+This repository falls under ` + renderLicenseLink(license) + `. More information may be available on this repository's "LICENSE" page.
+`;
   }
   return ``;
 }
@@ -49,6 +56,7 @@ This repository falls under ` + renderLicenseLink(license) + `. More information
 function installSection(data) {
   if(data.confirmInstall) {
     return `
+
 ## Installation
 
 ${data.install}
@@ -62,8 +70,25 @@ ${data.usage}
   }
 }
 
-function installSectionLink(data) {
-  if(data.confirmInstall) {
+function licenseSectionLink(license) {
+  if(license !== "none") {
+    return `- [License](#license)`;
+  } else {
+    return ``;
+  }
+}
+
+function contribsSectionLink(confirm) {
+  if(confirm) {
+    return `
+- [Contributing](#contributing)`;
+  } else {
+    return ``;
+  }
+}
+
+function installSectionLink(confirm) {
+  if(confirm) {
     return `
 - [Installation](#installation)
 - [Usage](#usage)`;
@@ -72,22 +97,26 @@ function installSectionLink(data) {
   }
 }
 
-// TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  return console.log(`# ${data.title}
+  return `# ${data.title}
 
 ${data.desc}
 
 ## Table of Contents
-` + installSectionLink(data) + `
+` + installSectionLink(data.confirmInstall) + `
 - [Credits](#credits)
-- [License](#license)
-` + installSection(data) + `
+` + licenseSectionLink(data.license) + contribsSectionLink(data.confirmContribs) + installSection(data) + `
 ## Credits
 
 ${data.credits}
+` + licenseSection(data.license) + contribsSection(data) + `
+## Tests
 
-` + renderLicenseSection(data.license));
+${data.testcases}
+
+## Questions
+
+If you have any questions that [${data.username}](https://github.com/${data.username}) can answer that aren't answered here, feel free to email them at [${data.email}](mailto:${data.email}).`;
 }
 
 module.exports = generateMarkdown;
