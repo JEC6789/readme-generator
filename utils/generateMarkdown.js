@@ -105,7 +105,9 @@ ${data.desc}
 ## Table of Contents
 ` + installSectionLink(data.confirmInstall) + `
 - [Credits](#credits)
-` + licenseSectionLink(data.license) + contribsSectionLink(data.confirmContribs) + installSection(data) + `
+` + licenseSectionLink(data.license) + contribsSectionLink(data.confirmContribs) + `
+- [Tests](#tests)
+- [Questions](#questions)` + installSection(data) + `
 ## Credits
 
 ${data.credits}

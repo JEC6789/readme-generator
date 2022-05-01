@@ -2,6 +2,21 @@ const fs = require("fs");
 const inquirer = require("inquirer");
 const generateMarkdown = require("./utils/generateMarkdown.js");
 
+const writeFile = fileContent => {
+    return new Promise((resolve, reject) => {
+        fs.writeFile("./README.md", fileContent, err => {
+            if(err) {
+                reject(err);
+                return;
+            }
+            resolve({
+                ok: true,
+                message: "File created!"
+            });
+        });
+    });
+}
+
 const promptUser = () => {
     return inquirer.prompt([
         {
@@ -143,6 +158,12 @@ const promptUser = () => {
 promptUser()
     .then(data => {
         return generateMarkdown(data);
+    })
+    .then(markdown => {
+        return writeFile(markdown);
+    })
+    .then(writeFileResponse => {
+        console.log(writeFileResponse.message);
     })
     .catch(err => {
         console.log(err);
