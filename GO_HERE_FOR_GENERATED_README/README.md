@@ -7,6 +7,8 @@ This program automatically generates a README.md file based on the parameters th
 - [Installation](#installation)
 - [Usage](#usage)
 - [Credits](#credits)
+- [License](#license)
+- [Tests](#tests)
 - [Questions](#questions)
 
 ## Installation
@@ -15,13 +17,20 @@ To install this program, click on the “Code” dropdown at the top of this pag
 
 ## Usage
 
-[![Video showcasing the usage of this program](./assets/thumbnail.png)](https://drive.google.com/file/d/1xdjX_TW3F5yNX3OBQBUv7sD17RGYkf7E/preview)
-
 Once all the necessary dependencies are installed, this program can be initiated by typing “node index”. This program will then lead you through a series of questions that are used to determine what will be included in the README file. Once all the questions are answered, your completed README.md file will be generated at `folder_for_this_program/GO_HERE_FOR_GENERATED_README/README.md`.
 
 ## Credits
 
 * Additional JS by Xandromus and gchoi2u
+
+## License
+![license: Unlicense](https://img.shields.io/badge/license-Unlicense-green)
+
+This repository falls under [The Unlicense](https://unlicense.org/). More information may be available on this repository's "LICENSE" page.
+
+## Tests
+
+I have no idea what to put here
 
 ## Questions
 

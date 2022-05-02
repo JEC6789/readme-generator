@@ -4,7 +4,7 @@ const generateMarkdown = require("./utils/generateMarkdown.js");
 
 const writeFile = fileContent => {
     return new Promise((resolve, reject) => {
-        fs.writeFile("./README.md", fileContent, err => {
+        fs.writeFile("./GO_HERE_FOR_GENERATED_README/README.md", fileContent, err => {
             if(err) {
                 reject(err);
                 return;
